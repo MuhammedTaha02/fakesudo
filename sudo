@@ -1,0 +1,68 @@
+#!/bin/bash
+###########################################################
+## Kullanıcı dostu fakesudo                              ##
+## (Friendly fakesudo)                                   ##
+## Author on Muhammed Taha                               ##
+## Telegram Profile = https://t.me/FedoraVirus           ##
+###########################################################
+a=0
+b=0
+c=0
+d=0
+if [ "$*" == "" ]
+	then
+		if [ "$(echo $LANG | awk -F "_" '{print $1}')" == "tr" ]
+			then
+				echo "HATA : Çalışmam için bana argüman vermelisin."
+		elif [ "$(echo $LANG | awk -F "_" '{print $1}')" != "tr" ]
+			then
+				echo "ERROR : You have to give me an argument for my work."
+		fi
+	else
+		if [ "$(echo $* | grep -o rm)" == "rm" ]
+			then
+				if [ "$(echo $LANG | awk -F "_" '{print $1}')" == "tr" ]
+					then
+						clear
+						while [[ $a -lt "$(($(echo $* | wc -m)+77))" ]] ; do echo -n "#" ; a=$(($a+1)) ; done
+						echo " "
+						echo """#  "rm" komutu tespit edildi, Bu dosyaları silmeye yarar. $(while [[ $b -lt "$(($(echo $* | wc -m)+19))" ]] ; do echo -n " " ; b=$(($b+1)) ; done) #"""
+						echo """#  Yapılacak işlemden emin değilseniz CTRL+D tuşuna basarak işlemi iptal edin. $(while [[ $c -lt $(($(echo $* | wc -m)-3)) ]] ; do echo -n " " ; c=$(($c+1)) ; done)#"""
+						echo """#  Çalıştırılacak komut [sudo "$*"], Devam etmek için parolanızı yazınız.        #"""
+						while [[ $d -lt "$(($(echo $* | wc -m)+77))" ]] ; do echo -n "#" ; d=$(($d+1)) ; done
+						echo " "
+						su -c "$*"
+				elif [ "$(echo $LANG | awk -F "_" '{print $1}')" != "tr" ]
+					then
+						clear
+						while [[ $a -lt "$(($(echo $* | wc -m)+88))" ]] ; do echo -n "#" ; a=$(($a+1)) ; done
+						echo " "
+						echo """#  "rm" command detected, This command is for deleting files. $(while [[ $b -lt "$(($(echo $* | wc -m)+26))" ]] ; do echo -n " " ; b=$(($b+1)) ; done) #"""
+						echo """#  If you are not sure about the procedure, cancel the transaction by pressing CTRL + D. $(while [[ $c -lt $(($(echo $* | wc -m)-2)) ]] ; do echo -n " " ; c=$(($c+1)) ; done)#"""
+						echo """#  Command [sudo "$*"] to run, type your password to continue.                              #"""
+						while [[ $d -lt "$(($(echo $* | wc -m)+88))" ]] ; do echo -n "#" ; d=$(($d+1)) ; done
+						echo " "
+						su -c "$*"
+				fi
+			else
+				if [ "$(echo $LANG | awk -F "_" '{print $1}')" == "tr" ]
+					then		
+						clear
+						while [[ $a -lt "$(($(echo $* | wc -m)+72))" ]] ; do echo -n "#" ; a=$(($a+1)) ; done
+						echo " "
+						echo """#  Çalıştırılacak komut [sudo "$*"], Devam etmek için parolanızı yazınız.   #"""
+						while [[ $c -lt "$(($(echo $* | wc -m)+72))" ]] ; do echo -n "#" ; c=$(($c+1)) ; done
+						echo " "
+						su -c "$*"
+				elif [ "$(echo $LANG | awk -F "_" '{print $1}')" != "tr" ]
+					then
+						clear
+						while [[ $a -lt "$(($(echo $* | wc -m)+88))" ]] ; do echo -n "#" ; a=$(($a+1)) ; done
+						echo " "
+						echo """#  Command [sudo "$*"] to run, type your password to continue.                              #"""
+						while [[ $c -lt "$(($(echo $* | wc -m)+88))" ]] ; do echo -n "#" ; c=$(($c+1)) ; done
+						echo " "
+						su -c "$*"
+				fi
+		fi	
+fi
