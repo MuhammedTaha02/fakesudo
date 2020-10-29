@@ -2,7 +2,7 @@
 ###########################################################
 ## FakeSudoSetup Tool                                    ##
 ## Author on Muhammed Taha                               ##
-## Telegram Profile = https://t.me/FedoraVirus           ##
+## Telegram Profile = https://t.me/U5M4NA6A              ##
 ###########################################################
 __ScriptVersion="1.0";
 
